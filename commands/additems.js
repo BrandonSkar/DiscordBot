@@ -78,7 +78,7 @@ module.exports = {
                     item: itemInfo.name,
                     amount: numDepositing,
                     critical: false,
-                    lowAmount: 999999
+                    lowAmount: 0
                 }
             }
     

@@ -13,7 +13,6 @@ module.exports = {
     name: 'guildbank',
     description: "Displays the guild bank items",
     async execute(message, args, Discord) {
-        const items = new Database.Items();
 
         const params = {
             TableName: tableName,
@@ -21,7 +20,6 @@ module.exports = {
         }
 
         const result = await docClient.scan(params).promise();
-        console.log(result);
 
         var itemString = '';
 

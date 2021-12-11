@@ -16,6 +16,7 @@ module.exports = {
     description: "Set an item as critical",
     async execute(message, args) {
         var lastElement = args.pop();
+        var lowAmount = Number(lastElement);
         
         //perform action for setting isCritical to false
         if(lastElement === 'f' || lastElement === 'false')
@@ -23,9 +24,7 @@ module.exports = {
             SetItemCriticalToFalse(message, args);
             return;
         }
-        
-        var lowAmount = Number(lastElement);
-        if(lowAmount != NaN)
+        else if(lowAmount != NaN)
         {
             SetItemCriticalToTrue(message, args, lowAmount);
         }
@@ -39,7 +38,7 @@ async function SetItemCriticalToFalse(message, args)
         itemName += element;
     });
 
-    var itemInfo = GetItemInfo(itemName);
+    var itemInfo = GetItemInfo(message, itemName);
     var result = await GetItemFromDatabase(itemInfo);
 
     if(result.Item != null)
@@ -76,7 +75,7 @@ async function SetItemCriticalToTrue(message, args, lowAmount)
         itemName += element;
     });
 
-    var itemInfo = GetItemInfo(itemName);
+    var itemInfo = GetItemInfo(message, itemName);
     var result = await GetItemFromDatabase(itemInfo);
 
     if(result.Item != null)
@@ -123,9 +122,9 @@ async function SetItemCriticalToTrue(message, args, lowAmount)
     }
 }
 
-function GetItemInfo(itemName)
+function GetItemInfo(message, itemName)
 {
-    if(!itemName) return message.channel.send('To set item as critical: !crit (item name) (true/false) (minimum number)\nex: !crit flask of blinding light true 10');
+    if(itemName === undefined) return message.channel.send('To set item as critical: !crit (item name) (true/false) (minimum number)\nex: !crit flask of blinding light true 10');
     var itemInfo = null;
     const items = new Database.Items();
     items.forEach(element => {
