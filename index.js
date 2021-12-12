@@ -6,7 +6,6 @@ const client = new Discord.Client({
 });
 
 const prefix = process.env.PREFIX;
-
 const fs = require('fs');
 const { CLIENT_RENEG_WINDOW } = require('tls');
 
@@ -61,4 +60,4 @@ client.on('messageCreate', message => {
     }
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client.login(process.env.token);
