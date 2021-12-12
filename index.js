@@ -29,11 +29,6 @@ client.on('messageCreate', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'ping')
-    {
-        client.commands.get('ping').execute(message, args);
-    }
-
     if(command === 'gb' || command === 'guildbank')
     {
         client.commands.get('guildbank').execute(message, args, Discord);
@@ -49,6 +44,11 @@ client.on('messageCreate', message => {
         client.commands.get('removeitems').execute(message, args);
     }
 
+    if(command === 'delete')
+    {
+        client.commands.get('deleteitems').execute(message, args);
+    }
+
     if(command === 'crit' || command === 'critical')
     {
         client.commands.get('setcritical').execute(message, args);
@@ -57,6 +57,11 @@ client.on('messageCreate', message => {
     if(command === 'low')
     {
         client.commands.get('lowitems').execute(message, args, Discord);
+    }
+
+    if(command === 'help')
+    {
+        client.commands.get('helpcommand').execute(message, args);
     }
 });
 
