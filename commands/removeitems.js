@@ -2,9 +2,9 @@ require('dotenv').config();
 const Database = require('wow-classic-items');
 const AWS = require('aws-sdk');
 AWS.config.update({
-    region: process.env.AWS_DEFAULT_REGION,
-    accessKeyId: process.env.DYNAMODB_ID,
-    secretAccessKey: process.env.DYNAMODB_SECRET
+    region: process.env.aws_default_region,
+    accessKeyId: process.env.dynamodb_id,
+    secretAccessKey: process.env.dynamodb_secret
 })
 
 const docClient = new AWS.DynamoDB.DocumentClient();

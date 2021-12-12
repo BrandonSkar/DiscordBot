@@ -5,7 +5,7 @@ const client = new Discord.Client({
     intents: ["GUILDS", "GUILD_MESSAGES"]
 });
 
-const prefix = process.env.PREFIX;
+const prefix = process.env.prefix;
 const fs = require('fs');
 const { CLIENT_RENEG_WINDOW } = require('tls');
 
