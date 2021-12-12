@@ -1,9 +1,8 @@
 const Discord = require('discord.js');
 require('dotenv').config();
 
-const client = new Discord.Client({
-    intents: ["GUILDS", "GUILD_MESSAGES"]
-});
+const { Client, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 const prefix = process.env.PREFIX;
 const fs = require('fs');
