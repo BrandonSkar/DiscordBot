@@ -42,7 +42,7 @@ module.exports = {
             }
     
             const newEmbed = new Discord.MessageEmbed()
-            .setColor('#26ff00')
+            .setColor('#FF0000')
             .setTitle('Guild Bank')
             .setDescription('These are the critically low items in the guild bank')
             .addField('CRITICALLY LOW ITEMS', itemString, true)

@@ -31,7 +31,7 @@ module.exports = {
             }
     
             const newEmbed = new Discord.MessageEmbed()
-            .setColor('#26ff00')
+            .setColor('#00FF00')
             .setTitle('Guild Bank')
             .setDescription('These are the items in the guild bank')
             .addField('Items', itemString, true)
