@@ -22,8 +22,18 @@ module.exports = {
         const result = await docClient.scan(params).promise();
 
         var itemString = '';
+        var criticallyLow = false;
 
-        if(result.Count > 0)
+        for(var i = result.Items.length - 1; i >- 0; i--)
+        {
+            if(result.Items[i].critical)
+            {
+                criticallyLow = true;
+                break;
+            }
+        }
+
+        if(result.Count > 0 && criticallyLow)
         {
             for(var i = result.Items.length - 1; i >= 0; i--)
             {
@@ -38,7 +48,11 @@ module.exports = {
             .addField('CRITICALLY LOW ITEMS', itemString, true)
     
             message.channel.send({ embeds: [newEmbed] });
-        } 
+        }
+        else if(result.Count > 0)
+        {
+            message.channel.send('There are no critically low items');
+        }
         else
         {
             message.channel.send('Guild Bank Empty');
