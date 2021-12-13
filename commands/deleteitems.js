@@ -49,7 +49,7 @@ module.exports = {
         {
             docClient.delete(params, (error) => {
                 if(!error) {
-                    return message.channel.send('Removed ' + itemInfo.name + ' x' + numTaking + ' from guild bank. (total: ' + totalAmount + ')');
+                    return message.channel.send('Deleted ' + itemInfo.name + ' from guild bank.');
                 } else {
                     throw "Invalid " + error;
                 }
