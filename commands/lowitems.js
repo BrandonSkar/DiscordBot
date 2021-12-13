@@ -24,9 +24,9 @@ module.exports = {
         var itemString = '';
         var criticallyLow = false;
 
-        for(var i = result.Items.length - 1; i >- 0; i--)
+        for(var i = result.Items.length - 1; i >= 0; i--)
         {
-            if(result.Items[i].critical)
+            if(result.Items[i].critical && result.Items[i].amount < result.Items[i].lowAmount)
             {
                 criticallyLow = true;
                 break;
