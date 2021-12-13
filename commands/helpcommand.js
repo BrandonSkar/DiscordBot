@@ -4,7 +4,7 @@ module.exports = {
     name: 'helpcommand',
     description: "Displays the functions of the program",
     async execute(message, args) {
-        message.channel.send("  **!add (item name) (amount)** - To add items.\n \
+        message.channel.send("**!add (item name) (amount)** - To add items.\n \
         ex: !add flask of relentless assault 10\n\n \
         **!remove (item name) (amount)** - To remove items.\n \
         ex: !remove flask of blinding light 15\n\n \
