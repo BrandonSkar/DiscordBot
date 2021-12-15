@@ -64,6 +64,14 @@ module.exports = {
                     }
                 });
             } else {
+                var isLow = false;
+
+                //check if the item is critically low after taking the amount
+                if(result.Item.critical && totalAmount < result.Item.lowAmount)
+                {
+                    isLow = true;
+                }
+
                 var params = {
                     TableName: tableName,
                     Item: {
@@ -75,8 +83,12 @@ module.exports = {
                     }
                 }
                 docClient.put(params, (error) => {
-                    if(!error) {
-                        return message.channel.send('Removed ' + itemInfo.name + ' x' + numTaking + ' from guild bank. (total: ' + totalAmount + ')');
+                    if(!error && isLow)
+                    {
+                        return message.channel.send('Removed ' + itemInfo.name + ' x' + numTaking + ' from guild bank. (total: ' + totalAmount + ')\n' + itemInfo.name + ' is critcally low. (On hand: ' + totalAmount + ' - needed: ' + result.Item.lowAmount + ')');
+                    }
+                    else if(!error) {
+                        return message.channel.send('Removed ' + itemInfo.name + ' x' + numTaking + ' from guild bank. (total: ' + totalAmount + ' )');
                     } else {
                         throw "Invalid " + error;
                     }

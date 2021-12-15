@@ -39,7 +39,7 @@ client.on('messageCreate', message => {
         client.commands.get('additems').execute(message, args);
     }
 
-    if(command === 'remove')
+    if(command === 'remove' || command === 'take')
     {
         client.commands.get('removeitems').execute(message, args);
     }
